@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=kensho
+Comment=Theme based on Ambiance
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=kensho
+MetacityTheme=kensho
+IconTheme=kensho
+CursorTheme=DMZ-Black
+ButtonLayout=close,minimize,maximize:

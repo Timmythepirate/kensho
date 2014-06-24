@@ -1,0 +1,143 @@
+@define-color nemo_sidebar_bg #3f3f3f;
+@define-color nemo_sidebar_fg #fff;
+@define-color nemo_sidebar_selected_fg #fff;
+
+@define-color desktop_item_fg #eeeeee;
+@define-color desktop_item_selected_fg #4389d4;
+@define-color desktop_item_text_shadow alpha(black, 0.8);
+
+@define-color theme_base_color #ffffff;
+@define-color theme_bg_color #4d4d4d;
+@define-color theme_selected_bg_color #4d4d4d;
+@define-color theme_selected_fg_color #ffffff;
+
+/********
+ * Nemo *
+ ********/
+
+/* sidebar */
+
+NemoWindow .sidebar .view {
+    -GtkWidget-focus-padding: 0;
+    -GtkWidget-focus-line-width: 1;
+    -GtkTreeView-vertical-separator: 0;
+    background-color: @nemo_sidebar_bg;
+    color: @nemo_sidebar_fg;
+    text-shadow: none;
+    icon-shadow: none;
+}
+
+NemoWindow .sidebar .view:selected {
+    border-color: @nemo_sidebar_bg;
+    color: @nemo_sidebar_selected_fg;
+    text-shadow: 1px 1px alpha(black, 0.2);
+    icon-shadow: 1px 1px alpha(black, 0.2);
+}
+
+NemoWindow .sidebar .expander:selected {
+    border-color: @nemo_sidebar_selected_fg;
+    color: @nemo_sidebar_selected_fg;
+}
+
+NemoPlacesTreeView {
+    -NemoPlacesTreeView-disk-full-bg-color: #bfbfbf;
+    -NemoPlacesTreeView-disk-full-fg-color: #3bbe50;
+    -NemoPlacesTreeView-disk-full-bar-width: 2px;
+    -NemoPlacesTreeView-disk-full-bar-radius: 1px;
+    -NemoPlacesTreeView-disk-full-bottom-padding: 2px;
+}
+
+NemoPlacesTreeView:selected {
+    -NemoPlacesTreeView-disk-full-bg-color: shade(@theme_selected_fg_color, 1.1);
+    -NemoPlacesTreeView-disk-full-fg-color: @theme_selected_bg_color;
+}
+
+NemoWindow .sidebar .scrollbar {
+    -GtkRange-slider-width: 10;
+}
+
+NemoWindow .sidebar .frame {
+    border: none;
+}
+
+NemoWindow > GtkGrid > .pane-separator {
+    background-color: transparent;
+}
+
+.nemo-canvas-item {
+    border-radius: 3px;
+}
+
+.nemo-desktop.nemo-canvas-item {
+    color: @desktop_item_fg;
+    text-shadow: 1px 1px @desktop_item_text_shadow;
+}
+
+.nemo-desktop.nemo-canvas-item:selected {
+    background-color: @desktop_item_selected_fg;
+    background-image: none;
+    color: @theme_selected_fg_color;
+    text-shadow: none;
+}
+
+/* notebook */
+
+NemoView.frame,
+NemoNotebook.notebook {
+    border: solid;
+    border-width: 1px 0 0 1px;
+    border-color: #dddddd;
+}
+
+NemoNotebook.notebook tab {
+	border: none;
+}
+NemoNotebook.notebook tab:active {
+    padding: 2px;
+}
+
+/* inactive pane */
+
+.nemo-inactive-pane .view {
+    background-color: shade(@theme_base_color, 0.93);
+    color: shade(@theme_fg_color, 1.2);
+}
+
+.nemo-inactive-pane .view:selected,
+.nemo-inactive-pane .nautilus-canvas-item:selected {   
+    background-color: alpha(@theme_selected_bg_color, 0.85);
+    color: @theme_selected_fg_color;
+}
+
+/* for breadcrumbs path bar */
+
+.nemo-pathbar-button,
+NemoPathbarButton {
+    background-image: -gtk-gradient(linear, left top, left bottom,
+    color-stop (0, shade(@bg_color, 1.1)),
+    color-stop (.3, shade(@bg_color, 1.1)),
+    color-stop (.7, shade(@bg_color, 0.90)),
+    color-stop (1, shade(@bg_color, 0.80)));
+    border-color: shade(@bg_color, 0.7);
+    -NemoPathbarButton-border-radius: 3px;
+    color: black;
+}
+
+NemoPathbarButton:active {
+    background-image: -gtk-gradient(linear, left top, left bottom,
+    color-stop (0, shade(@bg_color, .8)),
+    color-stop (.3, shade(@bg_color, .9)),
+    color-stop (1, shade(@bg_color, 1.0)));
+    border-color: shade(@bg_color, 0.7);
+    color: black;
+}
+
+NemoPathbarButton:hover {
+    background-image: -gtk-gradient(linear, left top, left bottom,
+    color-stop (0, shade(alpha(@selected_bg_color, 1.4), 1.25)),
+    color-stop (.3, shade(alpha(@selected_bg_color, 1.4), 1.25)),
+    color-stop (.7, shade(alpha(@selected_bg_color, 1.4), 0.95)),
+    color-stop (1, shade(alpha(@selected_bg_color, 1.4), 0.85)));
+    border-color: shade(@bg_color, 0.7);
+    color: white;
+}
